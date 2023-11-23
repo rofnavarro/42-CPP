@@ -3,12 +3,14 @@
 #ifndef PHONEBOOK_HPP
 # define PHONEBOOK_HPP
 
+# include "Contact.hpp"
+
 class Phonebook
 {
 private:
 	
 public:
-	Phonebook(/* args */);
+	Phonebook();
 	~Phonebook();
 };
 
