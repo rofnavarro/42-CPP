@@ -6,7 +6,7 @@
 /*   By: rferrero <rferrero@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 15:05:25 by rferrero          #+#    #+#             */
-/*   Updated: 2023/11/04 15:15:49 by rferrero         ###   ########.fr       */
+/*   Updated: 2023/11/26 20:33:00 by rferrero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,50 +22,50 @@ Contact::~Contact()
 
 void	Contact::setFirstName(std::string first)
 {
-	this->firstName = first;
+	this->_firstName = first;
 }
 
 void	Contact::setLastName(std::string last)
 {
-	this->lastName = last
+	this->_lastName = last
 }
 
 void	Contact::setNickName(std::string nick)
 {
-	this->nickName = nick;
+	this->_nickName = nick;
 }
 
 void	Contact::setPhoneNumber(std::String phone)
 {
-	this->phoneNumber = phone;
+	this->_phoneNumber = phone;
 }
 
 void	Contact::setDarkestSecret(std::string secret)
 {
-	this->darkestSecret = secret;
+	this->_darkestSecret = secret;
 }
 
 std::string	Contact::getFirstName(void)
 {
-	return (this->firstName);
+	return (this->_firstName);
 }
 
 std::string	Contact::getLastName(void)
 {
-	return (this->lastName);
+	return (this->_lastName);
 }
 
 std::string	Contact::getNickName(void)
 {
-	return (this->nickName);
+	return (this->_nickName);
 }
 
 std::string	Contact::getPhoneNumber(void)
 {
-	return (this->phoneNumber);
+	return (this->_phoneNumber);
 }
 
 std::string	Contact::getDarkestSecret(void)
 {
-	return (this->darkestSecret);
+	return (this->_darkestSecret);
 }

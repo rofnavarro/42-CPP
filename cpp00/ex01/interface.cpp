@@ -1,38 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Phonebook.cpp                                      :+:      :+:    :+:   */
+/*   interface.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rferrero <rferrero@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/04 14:53:28 by rferrero          #+#    #+#             */
-/*   Updated: 2023/11/26 20:36:04 by rferrero         ###   ########.fr       */
+/*   Created: 2023/11/26 20:41:14 by rferrero          #+#    #+#             */
+/*   Updated: 2023/11/26 20:47:19 by rferrero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Phonebook.hpp"
+#include <string>
 
-Phonebook::Phonebook()
+void	start_interface()
 {
-	_i = 0;
+	std::cout << "# Phonebook" << std::endl;
+	std::cout << "# Please enter you command (ADD, SEARCH or EXIT)" << std::endl;
 }
 
-Phonebook::~Phonebook()
+void	exit_interface()
 {
-
-}
-
-Phonebook::add_contact()
-{
-
-}
-
-Phonebook::search_contact()
-{
-
-}
-
-Phonebook::print_contact()
-{
-
+	std::cout << "...finishing" << std::endl;
+	std::cout << "Program Finished" << std::endl;
 }
