@@ -6,7 +6,7 @@
 /*   By: rferrero <rferrero@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 14:53:28 by rferrero          #+#    #+#             */
-/*   Updated: 2023/11/26 20:36:04 by rferrero         ###   ########.fr       */
+/*   Updated: 2023/11/27 19:52:58 by rferrero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,17 +22,34 @@ Phonebook::~Phonebook()
 
 }
 
-Phonebook::add_contact()
+void	Phonebook::addContact()
+{
+	std::string	input;
+
+	std::cout << "Adding a contact to your phonebook..." << std::endl;
+	std::cout << "Firstname: ";
+	std::getline(std::cin, input);
+	while (inputStrValidation(input) != 0)
+	{
+		std::cout << "Please, insert a vallid first name" << std::endl;
+		std::cout << "Firstname: ";
+		std::getline(std::cin, input);
+	}
+}
+
+void	Phonebook::searchContact()
 {
 
 }
 
-Phonebook::search_contact()
+void	Phonebook::printContact()
 {
 
 }
 
-Phonebook::print_contact()
+void	Phonebook::exitApp()
 {
-
+	std::cout << "...finishing" << std::endl;
+	std::cout << "Program Finished" << std::endl;
+	exit(0);
 }

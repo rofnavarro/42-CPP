@@ -5,6 +5,7 @@
 
 # include "Contact.hpp"
 # include <iostream>
+# include <locale>
 
 class Phonebook
 {
@@ -15,9 +16,10 @@ public:
 			Phonebook();
 			~Phonebook();
 
-	void	add_contact();
-	void	search_contact();
-	void	print_contact();
+	void	addContact();
+	void	searchContact();
+	void	printContact();
+	void	exitApp();
 };
 
 #endif
