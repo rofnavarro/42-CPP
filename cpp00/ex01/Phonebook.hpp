@@ -6,24 +6,27 @@
 # include <iostream>
 # include <queue>
 # include <cstdlib>
+# include <iomanip>
+
 # include "Contact.hpp"
 
-int	inputStrValidation(std::string input);
-int	inputNbrValidation(std::string input);
-
+int			inputStrValidation(std::string input);
+int			inputNbrValidation(std::string input);
+void		printHeader();
+std::string	convertStr(std::string input);
 
 class Phonebook
 {
 private:
-	std::queue<Contact>	_contacts;
-	int					_i;
+	Contact	_contacts[8];
+	int		_i;
 public:
 			Phonebook();
 			~Phonebook();
 
 	void	addContact();
 	void	searchContact();
-	void	printContact();
+	void	printContact(int i);
 	void	exitApp();
 };
 
