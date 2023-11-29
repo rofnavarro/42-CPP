@@ -6,7 +6,7 @@
 /*   By: rferrero <rferrero@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 15:05:25 by rferrero          #+#    #+#             */
-/*   Updated: 2023/11/26 20:33:00 by rferrero         ###   ########.fr       */
+/*   Updated: 2023/11/29 14:09:53 by rferrero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	Contact::setFirstName(std::string first)
 
 void	Contact::setLastName(std::string last)
 {
-	this->_lastName = last
+	this->_lastName = last;
 }
 
 void	Contact::setNickName(std::string nick)
@@ -35,7 +35,7 @@ void	Contact::setNickName(std::string nick)
 	this->_nickName = nick;
 }
 
-void	Contact::setPhoneNumber(std::String phone)
+void	Contact::setPhoneNumber(std::string phone)
 {
 	this->_phoneNumber = phone;
 }

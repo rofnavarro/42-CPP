@@ -1,25 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   interface.cpp                                      :+:      :+:    :+:   */
+/*   utils.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rferrero <rferrero@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/26 20:41:14 by rferrero          #+#    #+#             */
-/*   Updated: 2023/11/26 20:47:19 by rferrero         ###   ########.fr       */
+/*   Created: 2023/11/29 13:42:11 by rferrero          #+#    #+#             */
+/*   Updated: 2023/11/29 14:49:26 by rferrero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string>
+#include "utils.hpp"
 
-void	start_interface()
+int	inputNbrValidation(std::string &input)
 {
-	std::cout << "# Phonebook" << std::endl;
-	std::cout << "# Please enter you command (ADD, SEARCH or EXIT)" << std::endl;
+	std::string::iterator	i;
+
+	for (i = input.begin(); i != input.end(); i++)
+	{
+		if (!isdigit(*i))
+			return (1);
+	}
+	return (0);
 }
 
-void	exit_interface()
+int	inputStrValidation(std::string &input)
 {
-	std::cout << "...finishing" << std::endl;
-	std::cout << "Program Finished" << std::endl;
+	std::string::iterator	i;
+
+	for (i = input.begin(); i != input.end(); i++)
+	{
+		if (!isprint(*i))
+			return(1);
+	}
+	return(0);
 }
