@@ -6,7 +6,7 @@
 /*   By: rferrero <rferrero@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2028/11/04 14:58:28 by rferrero          #+#    #+#             */
-/*   Updated: 2023/11/29 19:08:11 by rferrero         ###   ########.fr       */
+/*   Updated: 2023/11/29 19:17:28 by rferrero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,47 +72,57 @@ void	Phonebook::addContact()
 		std::cout << "Adding a contact to your phonebook..." << std::endl;
 		std::cout << "Firstname: ";
 		std::getline(std::cin, input);
+		exitApp(input);
 		while (inputStrValidation(input) != 0)
 		{
 			std::cout << "Please, insert a vallid first name" << std::endl;
 			std::cout << "Firstname: ";
 			std::getline(std::cin, input);
+			exitApp(input);
 		}
 		this->_contacts[_i].setFirstName(input);
 		std::cout << "Lastname: ";
 		std::getline(std::cin, input);
+		exitApp(input);
 		while (inputStrValidation(input) != 0)
 		{
 			std::cout << "Please, insert a vallid last name" << std::endl;
 			std::cout << "Lastname: ";
 			std::getline(std::cin, input);
+			exitApp(input);
 		}
 		this->_contacts[_i].setLastName(input);
 		std::cout << "Nickname: ";
 		std::getline(std::cin, input);
+		exitApp(input);
 		while (inputStrValidation(input) != 0)
 		{
 			std::cout << "Please, insert a vallid nick name" << std::endl;
 			std::cout << "Nickname: ";
 			std::getline(std::cin, input);
+			exitApp(input);
 		}
 		this->_contacts[_i].setNickName(input);
 		std::cout << "Phone Number (only numbers): ";
 		std::getline(std::cin, input);
+		exitApp(input);
 		while (inputNbrValidation(input) != 0)
 		{
 			std::cout << "Please, insert a vallid phone number" << std::endl;
 			std::cout << "Phone Number (only numbers): ";
 			std::getline(std::cin, input);
+			exitApp(input);
 		}
 		this->_contacts[_i].setPhoneNumber(input);
 		std::cout << "Darkest Secret: ";
 		std::getline(std::cin, input);
+		exitApp(input);
 		while (inputStrValidation(input) != 0)
 		{
 			std::cout << "Please, insert a vallid darkest secret" << std::endl;
 			std::cout << "Darkest Secret: ";
 			std::getline(std::cin, input);
+			exitApp(input);
 		}
 		this->_contacts[_i].setDarkestSecret(input);
 		this->_i++;
@@ -143,12 +153,14 @@ void	Phonebook::searchContact()
 	std::cout << std::endl;
 	std::cout << "Please chose one contact by the index: ";
 	std::getline(std::cin, tmp);
+	exitApp(tmp);
 	while (tmp.length() < 1 || tmp.length() > 1)
 	{
 		if (tmp.length() > 1)
 			std::cout << "Please enter one digit number" << std::endl;
 		std::cout << "Please chose one contact by the index: ";
 		std::getline(std::cin, tmp);
+		exitApp(tmp);
 	}
 	while (tmp.length() == 1)
 	{
@@ -157,6 +169,7 @@ void	Phonebook::searchContact()
 			std::cout << "Please, insert a vallid index" << std::endl;
 			std::cout << "From 1 to " << (this->_i) << ": ";
 			std::getline(std::cin, tmp);
+			exitApp(tmp);
 		}
 		Phonebook::printContact(tmp[0] - '0');
 		break;
@@ -173,10 +186,13 @@ void	Phonebook::printContact(int	i)
 	std::cout << "|Darkest Secret: " << this->_contacts[i - 1].getDarkestSecret() << std::endl;;
 }
 
-void	Phonebook::exitApp()
+void	Phonebook::exitApp(std::string cmd)
 {
-	Phonebook::~Phonebook();
-	std::cout << "...finishing" << std::endl;
-	std::cout << "Program Finished" << std::endl;
-	exit(0);
+	if (cmd == "EXIT")
+	{
+		Phonebook::~Phonebook();
+		std::cout << "...finishing" << std::endl;
+		std::cout << "Program Finished" << std::endl;
+		exit(0);
+	}
 }

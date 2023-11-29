@@ -6,7 +6,7 @@
 /*   By: rferrero <rferrero@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 01:30:00 by rferrero          #+#    #+#             */
-/*   Updated: 2023/11/29 15:48:56 by rferrero         ###   ########.fr       */
+/*   Updated: 2023/11/29 19:15:51 by rferrero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,12 @@ int	main(void)
 	{
 		std::cout << "# Please enter you command (ADD, SEARCH or EXIT)" << std::endl;
 		std::getline(std::cin, input);
+		agenda.exitApp(input);
 		if (input == "ADD")
 			agenda.addContact();
 		else if(input == "SEARCH")
 			agenda.searchContact();
-		else if (input == "EXIT")
-			agenda.exitApp();
 		else
-			std::cout << "# Please enter a valid command (ADD, SEARCH or EXIT)" << std::endl;
+			std::cout << "# Please enter a valid command" << std::endl;
 	}
 }

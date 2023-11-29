@@ -27,7 +27,7 @@ public:
 	void	addContact();
 	void	searchContact();
 	void	printContact(int i);
-	void	exitApp();
+	void	exitApp(std::string cmd);
 };
 
 
