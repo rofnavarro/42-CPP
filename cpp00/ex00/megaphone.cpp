@@ -6,7 +6,7 @@
 /*   By: rferrero <rferrero@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 14:10:41 by rferrero          #+#    #+#             */
-/*   Updated: 2023/11/26 20:13:08 by rferrero         ###   ########.fr       */
+/*   Updated: 2023/11/30 07:09:22 by rferrero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	main(int argc, char **argv)
 		}
 	}
 	else
-		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *";
+		speak_megaphone("* LOUD AND UNBEARABLE FEEDBACK NOISE *");
 	std::cout << std::endl;
 	return (0);
 }

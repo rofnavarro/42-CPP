@@ -6,7 +6,7 @@
 /*   By: rferrero <rferrero@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2028/11/04 14:58:28 by rferrero          #+#    #+#             */
-/*   Updated: 2023/11/29 19:17:28 by rferrero         ###   ########.fr       */
+/*   Updated: 2023/11/30 11:49:08 by rferrero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,16 +36,6 @@ int	inputStrValidation(std::string input)
 	return(0);
 }
 
-void	printHeader()
-{
-	std::cout << " ___________________________________________ " << std::endl;
-	std::cout << "|          |          |          |          |" << std::endl;
-	std::cout << "|" << std::setw(10) << "INDEX";
-	std::cout << "|" << std::setw(10) << "FIRST NAME";
-	std::cout << "|" << std::setw(10) << "LAST NAME";
-	std::cout << "|" << std::setw(10) << "NICKNAME" << "|" << std::endl;;
-	std::cout << "|__________|__________|__________|__________|" << std::endl;
-}
 
 std::string	convertStr(std::string input)
 {
@@ -73,7 +63,7 @@ void	Phonebook::addContact()
 		std::cout << "Firstname: ";
 		std::getline(std::cin, input);
 		exitApp(input);
-		while (inputStrValidation(input) != 0)
+		while (inputStrValidation(input) != 0 || !input[0])
 		{
 			std::cout << "Please, insert a vallid first name" << std::endl;
 			std::cout << "Firstname: ";
@@ -84,7 +74,7 @@ void	Phonebook::addContact()
 		std::cout << "Lastname: ";
 		std::getline(std::cin, input);
 		exitApp(input);
-		while (inputStrValidation(input) != 0)
+		while (inputStrValidation(input) != 0 || !input[0])
 		{
 			std::cout << "Please, insert a vallid last name" << std::endl;
 			std::cout << "Lastname: ";
@@ -95,7 +85,7 @@ void	Phonebook::addContact()
 		std::cout << "Nickname: ";
 		std::getline(std::cin, input);
 		exitApp(input);
-		while (inputStrValidation(input) != 0)
+		while (inputStrValidation(input) != 0 || !input[0])
 		{
 			std::cout << "Please, insert a vallid nick name" << std::endl;
 			std::cout << "Nickname: ";
@@ -106,7 +96,7 @@ void	Phonebook::addContact()
 		std::cout << "Phone Number (only numbers): ";
 		std::getline(std::cin, input);
 		exitApp(input);
-		while (inputNbrValidation(input) != 0)
+		while (inputNbrValidation(input) != 0 || !input[0])
 		{
 			std::cout << "Please, insert a vallid phone number" << std::endl;
 			std::cout << "Phone Number (only numbers): ";
@@ -117,7 +107,7 @@ void	Phonebook::addContact()
 		std::cout << "Darkest Secret: ";
 		std::getline(std::cin, input);
 		exitApp(input);
-		while (inputStrValidation(input) != 0)
+		while (inputStrValidation(input) != 0 || !input[0])
 		{
 			std::cout << "Please, insert a vallid darkest secret" << std::endl;
 			std::cout << "Darkest Secret: ";
@@ -139,41 +129,32 @@ void	Phonebook::addContact()
 void	Phonebook::searchContact()
 {
 	std::string	tmp;
+	int			index;
 
-	printHeader();
-	for (int i = 0; i < this->_i; i++)
+	if (this->_i == 0)
 	{
-		std::cout << "|" << std::setw(10) << (i + 1);
-		std::cout << "|" << std::setw(10) << convertStr(this->_contacts[i].getFirstName());
-		std::cout << "|" << std::setw(10) << convertStr(this->_contacts[i].getLastName());
-		std::cout << "|" << std::setw(10) << convertStr(this->_contacts[i].getNickName());
-		std::cout << "|" << std::endl;
+		std::cout << "# No contacts in your phonebook!" << std::endl;
+		return ;
 	}
-	std::cout << "|__________|__________|__________|__________|" << std::endl;
-	std::cout << std::endl;
+	printHeader();
 	std::cout << "Please chose one contact by the index: ";
 	std::getline(std::cin, tmp);
 	exitApp(tmp);
-	while (tmp.length() < 1 || tmp.length() > 1)
+	while (true)
 	{
-		if (tmp.length() > 1)
-			std::cout << "Please enter one digit number" << std::endl;
-		std::cout << "Please chose one contact by the index: ";
+
+		if (inputNbrValidation(tmp) == 0)
+		{
+			std::istringstream(tmp) >> index;
+			if (index <= this->_i && index > 0)
+				break;
+		}
+		std::cout << "Please insert a valid index" << std::endl;
+		std::cout << "From 1 to " << (this->_i) << ": ";
 		std::getline(std::cin, tmp);
 		exitApp(tmp);
 	}
-	while (tmp.length() == 1)
-	{
-		if (tmp[0] < 49 && tmp[0] > this->_i)
-		{
-			std::cout << "Please, insert a vallid index" << std::endl;
-			std::cout << "From 1 to " << (this->_i) << ": ";
-			std::getline(std::cin, tmp);
-			exitApp(tmp);
-		}
-		Phonebook::printContact(tmp[0] - '0');
-		break;
-	}
+	Phonebook::printContact(index);
 }
 
 void	Phonebook::printContact(int	i)
@@ -195,4 +176,25 @@ void	Phonebook::exitApp(std::string cmd)
 		std::cout << "Program Finished" << std::endl;
 		exit(0);
 	}
+}
+
+void	Phonebook::printHeader()
+{
+	std::cout << " ___________________________________________ " << std::endl;
+	std::cout << "|          |          |          |          |" << std::endl;
+	std::cout << "|" << std::setw(10) << "INDEX";
+	std::cout << "|" << std::setw(10) << "FIRST NAME";
+	std::cout << "|" << std::setw(10) << "LAST NAME";
+	std::cout << "|" << std::setw(10) << "NICKNAME" << "|" << std::endl;;
+	std::cout << "|__________|__________|__________|__________|" << std::endl;
+	for (int i = 0; i < this->_i; i++)
+	{
+		std::cout << "|" << std::setw(10) << (i + 1);
+		std::cout << "|" << std::setw(10) << convertStr(this->_contacts[i].getFirstName());
+		std::cout << "|" << std::setw(10) << convertStr(this->_contacts[i].getLastName());
+		std::cout << "|" << std::setw(10) << convertStr(this->_contacts[i].getNickName());
+		std::cout << "|" << std::endl;
+	}
+	std::cout << "|__________|__________|__________|__________|" << std::endl;
+	std::cout << std::endl;
 }

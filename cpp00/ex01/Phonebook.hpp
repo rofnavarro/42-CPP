@@ -4,7 +4,7 @@
 # define PHONEBOOK_HPP
 
 # include <iostream>
-# include <queue>
+# include <sstream>
 # include <cstdlib>
 # include <iomanip>
 
@@ -12,7 +12,6 @@
 
 int			inputStrValidation(std::string input);
 int			inputNbrValidation(std::string input);
-void		printHeader();
 std::string	convertStr(std::string input);
 
 class Phonebook
@@ -28,6 +27,8 @@ public:
 	void	searchContact();
 	void	printContact(int i);
 	void	exitApp(std::string cmd);
+
+	void	printHeader();
 };
 
 
