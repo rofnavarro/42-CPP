@@ -6,7 +6,7 @@
 /*   By: rferrero <rferrero@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 20:19:32 by rferrero          #+#    #+#             */
-/*   Updated: 2023/12/01 21:08:47 by rferrero         ###   ########.fr       */
+/*   Updated: 2023/12/02 15:34:22 by rferrero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,4 +80,5 @@ void	Converter::newFile(std::ofstream &to, std::string &tmp)
 {
 	to << tmp;
 	to.close();
+	return ;
 }
