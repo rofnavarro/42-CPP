@@ -14,13 +14,15 @@ private:
     std::string 	_s1;
     std::string 	_s2;
 
-	void			handler();
-	std::string 	contentToString();
+	int				fileCheck(std::ifstream &from);
+	std::string 	contentToString(std::ifstream &from);
+	void			findAndReplace(std::string &tmp);
+	void			newFile(std::ofstream &to, std::string &tmp);
 
 public:
-	Converter(std::ifstream from, std::string s1, std::string s2);
-	~Converter();
-	int	fileCheck();
+			Converter(std::string from, std::string s1, std::string s2);
+			~Converter(void);
+	void	work();
 };
 
 #endif
