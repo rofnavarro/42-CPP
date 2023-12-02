@@ -1,3 +1,5 @@
+#pragma once
+
 #ifndef CONVERTER_HPP
 # define CONVERTER_HPP
 
@@ -22,7 +24,7 @@ private:
 public:
 			Converter(std::string from, std::string s1, std::string s2);
 			~Converter(void);
-	void	work();
+	void	work(void);
 };
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: rferrero <rferrero@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 20:19:32 by rferrero          #+#    #+#             */
-/*   Updated: 2023/12/01 20:59:29 by rferrero         ###   ########.fr       */
+/*   Updated: 2023/12/01 21:08:47 by rferrero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,12 @@ Converter::Converter(std::string from, std::string s1, std::string s2)
 	return ;
 }
 
-Converter::~Converter()
+Converter::~Converter(void)
 {
 	return ;
 }
 
-void	Converter::work()
+void	Converter::work(void)
 {
 	std::ifstream	from(this->_from.c_str());
 	std::string		tmp;
