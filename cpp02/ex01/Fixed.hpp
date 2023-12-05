@@ -17,6 +17,7 @@ public:
 						Fixed(const float value);
 						Fixed(const Fixed &fixed);
 						~Fixed(void);
+
 	Fixed				&operator=(const Fixed &rhs);
 
 	int					getRawBits(void) const;
