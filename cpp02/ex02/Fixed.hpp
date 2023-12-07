@@ -19,21 +19,20 @@ public:
 						~Fixed(void);
 
 	Fixed				&operator=(const Fixed &rhs);
-
-	Fixed				operator>(const Fixed &rhs) const;
-	Fixed				operator<(const Fixed &rhs) const;
-	Fixed				operator>=(const Fixed &rhs) const;
-	Fixed				operator<=(const Fixed &rhs) const;
-	Fixed				operator==(const Fixed &rhs) const;
-	Fixed				operator!=(const Fixed &rhs) const;
-
 	Fixed				operator+(const Fixed &rhs) const;
 	Fixed				operator-(const Fixed &rhs) const;
 	Fixed				operator*(const Fixed &rhs) const;
 	Fixed				operator/(const Fixed &rhs) const;
 
-	Fixed				operator++(void);
-	Fixed				operator--(void);
+	bool				operator>(const Fixed &rhs) const;
+	bool				operator<(const Fixed &rhs) const;
+	bool				operator>=(const Fixed &rhs) const;
+	bool				operator<=(const Fixed &rhs) const;
+	bool				operator==(const Fixed &rhs) const;
+	bool				operator!=(const Fixed &rhs) const;
+
+	Fixed				operator++(int);
+	Fixed				operator--(int);
 
 	Fixed				&operator++(void);
 	Fixed				&operator--(void);
@@ -50,7 +49,8 @@ public:
 	float				toFloat(void) const;
 	int					toInt(void) const;
 	
-	friend std::ostream	&operator<<(std::ostream &lhs, const Fixed &rhs);
 };
+
+std::ostream	&operator<<(std::ostream &lhs, const Fixed &rhs);
 
 #endif

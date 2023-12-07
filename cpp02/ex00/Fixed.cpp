@@ -6,7 +6,7 @@
 /*   By: rferrero <rferrero@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 18:12:25 by rferrero          #+#    #+#             */
-/*   Updated: 2023/12/05 16:09:36 by rferrero         ###   ########.fr       */
+/*   Updated: 2023/12/07 17:19:10 by rferrero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 Fixed::Fixed(void)
 {
-	this->_value = 0;
 	std::cout << "Default constructor called" << std::endl;
+	this->_value = 0;
 	return ;
 }
 
