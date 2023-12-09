@@ -6,7 +6,7 @@
 /*   By: rferrero <rferrero@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 16:05:31 by rferrero          #+#    #+#             */
-/*   Updated: 2023/12/08 16:09:30 by rferrero         ###   ########.fr       */
+/*   Updated: 2023/12/08 16:13:56 by rferrero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ int	main(void)
 	}
 
 	std::cout << "Insert a point to check if it's inside the triangle" << std::endl;
+	
 	std::cout << "Point x: ";
 	std::getline(std::cin, x);
 	std::cout << "Point y: ";

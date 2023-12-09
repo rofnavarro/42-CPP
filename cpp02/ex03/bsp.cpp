@@ -6,7 +6,7 @@
 /*   By: rferrero <rferrero@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 16:06:31 by rferrero          #+#    #+#             */
-/*   Updated: 2023/12/08 16:11:10 by rferrero         ###   ########.fr       */
+/*   Updated: 2023/12/09 01:08:35 by rferrero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,7 @@ double	pointsDistance(Point const &one, Point const &two)
 
 	dist = sqrt(pow((one.getX()).toFloat() - (two.getX()).toFloat(), 2) + pow((one.getY()).toFloat() - (two.getY()).toFloat(), 2));
 	
-	if (dist >= 0)
-		return (dist);
-	else
-		return (dist * -1);
+	return (dist);
 }
 
 bool	isTriangle(Point a, Point b, Point c)
@@ -74,7 +71,7 @@ bool	bsp(Point const a, Point const b, Point const c, Point const point)
 	std::cout << "Area PCA: " << area[2] << std::endl;
 	std::cout << "Area PAB: " << area[3] << std::endl;
 
-	if ( roundf(area[0]) == roundf(area[1] + area[2] + area[3]))
+	if ( (area[0]) == (area[1] + area[2] + area[3]))
 		ret = true;
 	else
 		ret = false;
