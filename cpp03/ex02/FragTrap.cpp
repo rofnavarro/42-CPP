@@ -1,51 +1,51 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScavTrap.cpp                                       :+:      :+:    :+:   */
+/*   FragTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rferrero <rferrero@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/11 15:52:54 by rferrero          #+#    #+#             */
-/*   Updated: 2023/12/11 16:47:10 by rferrero         ###   ########.fr       */
+/*   Created: 2023/12/11 16:43:32 by rferrero          #+#    #+#             */
+/*   Updated: 2023/12/11 16:47:22 by rferrero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScavTrap.hpp"
+#include "FragTrap.hpp"
 
-ScavTrap::ScavTrap(void)
+FragTrap::FragTrap(void)
 :ClapTrap()
 {
-	std::cout << "ScavTrap default constructor called" << std::endl;
+	std::cout << "FragTrap default constructor called" << std::endl;
 	return ;
 }
 
-ScavTrap::ScavTrap(std::string name)
+FragTrap::FragTrap(std::string name)
 :ClapTrap(name)
 {
-	std::cout << "ScavTrap " << this->_name << " is created" << std::endl;
+	std::cout << "FragTrap " << this->_name << " is created" << std::endl;
 	this->_hitPoints = 100;
-	this->_energyPoints = 50;
-	this->_attackDamage = 20;
+	this->_energyPoints = 100;
+	this->_attackDamage = 30;
 	return ;
 }
 
-ScavTrap::ScavTrap(const ScavTrap &scavTrap)
-:ClapTrap(scavTrap)
+FragTrap::FragTrap(const FragTrap &fragTrap)
+:ClapTrap(fragTrap)
 {
-	std::cout << "ScavTrap copy constructor called" << std::endl;
-	*this = scavTrap;
+	std::cout << "FragTrap copy constructor called" << std::endl;
+	*this = fragTrap;
 	return ;
 }
 
-ScavTrap::~ScavTrap(void)
+FragTrap::~FragTrap(void)
 {
-	std::cout << "ScavTrap destructor called" << std::endl;
+	std::cout << "FragTrap destructor called" << std::endl;
 	return ;
 }
 
-ScavTrap	&ScavTrap::operator=(const ScavTrap &rhs)
+FragTrap	&FragTrap::operator=(const FragTrap &rhs)
 {
-	std::cout << "ScavTrap assignment operator called" << std::endl;
+	std::cout << "FragTrap assignment operator called" << std::endl;
 	if (this != &rhs)
 	{
 		this->_name = rhs._name;
@@ -56,7 +56,7 @@ ScavTrap	&ScavTrap::operator=(const ScavTrap &rhs)
 	return (*this);
 }
 
-void	ScavTrap::attack(const std::string &target)
+void	FragTrap::attack(const std::string &target)
 {
 	if (this->_hitPoints <= 0)
 	{
@@ -68,24 +68,26 @@ void	ScavTrap::attack(const std::string &target)
 		std::cout << this->_name << " has no energy left" << std::endl;
 		return ;
 	}
-	std::cout << "ScavTrap " << this->_name << " attacks " << target << ", causing " << this->_attackDamage << " points of damage!" << std::endl;
-	this->_energyPoints--;
+	if (this->_energyPoints <= 100)
+	{	std::cout << "FragTrap " << this->_name << " attacks " << target << ", causing " << this->_attackDamage << " points of damage!" << std::endl;
+		this->_energyPoints--;
+	}
 	return ;
 }
 
-void	ScavTrap::takeDamage(unsigned int amount)
+void	FragTrap::takeDamage(unsigned int amount)
 {
 	if (this->_hitPoints <= 0)
 	{
 		std::cout << this->_name << " is dead" << std::endl;
 		return ;
 	}
-	std::cout << "ScavTrap " << this->_name << " takes " << amount  << " points of damage!" << std::endl;
+	std::cout << "FragTrap " << this->_name << " takes " << amount  << " points of damage!" << std::endl;
 	this->_hitPoints -= amount;
 	return ;
 }
 
-void	ScavTrap::beRepaired(unsigned int amount)
+void	FragTrap::beRepaired(unsigned int amount)
 {
 	if (this->_hitPoints <= 0)
 	{
@@ -97,17 +99,17 @@ void	ScavTrap::beRepaired(unsigned int amount)
 		std::cout << this->_name << " has no energy left" << std::endl;
 		return ;
 	}
-	if (this->_energyPoints <= 50)
+	if (this->_energyPoints <= 100)
 	{
-		std::cout << "ScavTrap " << this->_name << " repairs itself and gets " << amount << " hits points!" << std::endl;
+		std::cout << "FragTrap " << this->_name << " repairs itself and gets " << amount << " hits points!" << std::endl;
 		this->_energyPoints--;
 		this->_hitPoints += amount;
 	}
 	return ;
 }
 
-void	ScavTrap::guardGate(void)
+void	FragTrap::highFiveGuys(void)
 {
-	std::cout << "ScavTrap " << this->_name << " is now in Gate Keeper mode" << std::endl;
+	std::cout << "FragTrap " << this->_name << " is requesting a high five!!" << std::endl;
 	return ;
 }
