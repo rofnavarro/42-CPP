@@ -5,7 +5,7 @@ CC						=					c++
 CCFLAGS					=					-Wall -Wextra -Werror
 STDFLAG					=					-std=c++98
 
-SRC						=					main.cpp ClapTrap.cpp ScavTrap.hpp FragTrap.cpp
+SRC						=					main.cpp ClapTrap.cpp ScavTrap.cpp FragTrap.cpp
 
 OBJ						=					$(SRC:.cpp=.o)
 
