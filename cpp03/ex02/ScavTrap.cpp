@@ -6,7 +6,7 @@
 /*   By: rferrero <rferrero@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 15:52:54 by rferrero          #+#    #+#             */
-/*   Updated: 2023/12/11 16:46:58 by rferrero         ###   ########.fr       */
+/*   Updated: 2023/12/11 18:19:20 by rferrero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,15 +61,16 @@ void	ScavTrap::attack(const std::string &target)
 	if (this->_hitPoints <= 0)
 	{
 		std::cout << this->_name << " is dead" << std::endl;
-		return ;
 	}
 	if (this->_energyPoints <= 0)
 	{
 		std::cout << this->_name << " has no energy left" << std::endl;
-		return ;
 	}
-	std::cout << "ScavTrap " << this->_name << " attacks " << target << ", causing " << this->_attackDamage << " points of damage!" << std::endl;
-	this->_energyPoints--;
+	if (this->_energyPoints > 0)
+	{
+		std::cout << "ScavTrap " << this->_name << " attacks " << target << ", causing " << this->_attackDamage << " points of damage!" << std::endl;
+		this->_energyPoints--;
+	}
 	return ;
 }
 
@@ -78,10 +79,12 @@ void	ScavTrap::takeDamage(unsigned int amount)
 	if (this->_hitPoints <= 0)
 	{
 		std::cout << this->_name << " is dead" << std::endl;
-		return ;
 	}
-	std::cout << "ScavTrap " << this->_name << " takes " << amount  << " points of damage!" << std::endl;
-	this->_hitPoints -= amount;
+	else
+	{
+		std::cout << "ScavTrap " << this->_name << " takes " << amount  << " points of damage!" << std::endl;
+		this->_hitPoints -= amount;
+	}
 	return ;
 }
 
@@ -90,14 +93,12 @@ void	ScavTrap::beRepaired(unsigned int amount)
 	if (this->_hitPoints <= 0)
 	{
 		std::cout << this->_name << " is dead" << std::endl;
-		return ;
 	}
 	if (this->_energyPoints <= 0)
 	{
 		std::cout << this->_name << " has no energy left" << std::endl;
-		return ;
 	}
-	if (this->_energyPoints <= 50)
+	if (this->_energyPoints > 0)
 	{
 		std::cout << "ScavTrap " << this->_name << " repairs itself and gets " << amount << " hits points!" << std::endl;
 		this->_energyPoints--;

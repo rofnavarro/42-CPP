@@ -6,7 +6,7 @@
 /*   By: rferrero <rferrero@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 16:43:32 by rferrero          #+#    #+#             */
-/*   Updated: 2023/12/11 16:47:22 by rferrero         ###   ########.fr       */
+/*   Updated: 2023/12/11 18:18:39 by rferrero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,14 +61,12 @@ void	FragTrap::attack(const std::string &target)
 	if (this->_hitPoints <= 0)
 	{
 		std::cout << this->_name << " is dead" << std::endl;
-		return ;
 	}
 	if (this->_energyPoints <= 0)
 	{
 		std::cout << this->_name << " has no energy left" << std::endl;
-		return ;
 	}
-	if (this->_energyPoints <= 100)
+	if (this->_energyPoints > 0)
 	{	std::cout << "FragTrap " << this->_name << " attacks " << target << ", causing " << this->_attackDamage << " points of damage!" << std::endl;
 		this->_energyPoints--;
 	}
@@ -80,10 +78,12 @@ void	FragTrap::takeDamage(unsigned int amount)
 	if (this->_hitPoints <= 0)
 	{
 		std::cout << this->_name << " is dead" << std::endl;
-		return ;
 	}
-	std::cout << "FragTrap " << this->_name << " takes " << amount  << " points of damage!" << std::endl;
-	this->_hitPoints -= amount;
+	else
+	{
+		std::cout << "FragTrap " << this->_name << " takes " << amount  << " points of damage!" << std::endl;
+		this->_hitPoints -= amount;
+	}
 	return ;
 }
 
@@ -92,14 +92,12 @@ void	FragTrap::beRepaired(unsigned int amount)
 	if (this->_hitPoints <= 0)
 	{
 		std::cout << this->_name << " is dead" << std::endl;
-		return ;
 	}
 	if (this->_energyPoints <= 0)
 	{
 		std::cout << this->_name << " has no energy left" << std::endl;
-		return ;
 	}
-	if (this->_energyPoints <= 100)
+	if (this->_energyPoints > 0)
 	{
 		std::cout << "FragTrap " << this->_name << " repairs itself and gets " << amount << " hits points!" << std::endl;
 		this->_energyPoints--;

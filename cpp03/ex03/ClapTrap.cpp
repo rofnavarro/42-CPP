@@ -6,7 +6,7 @@
 /*   By: rferrero <rferrero@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 01:16:47 by rferrero          #+#    #+#             */
-/*   Updated: 2023/12/11 18:17:24 by rferrero         ###   ########.fr       */
+/*   Updated: 2023/12/11 18:39:02 by rferrero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,10 +109,12 @@ void	ClapTrap::beRepaired(unsigned int amount)
 	if (this->_hitPoints <= 0)
 	{
 		std::cout << this->_name << " is dead" << std::endl;
+		return ;
 	}
 	if (this->_energyPoints <= 0)
 	{
 		std::cout << this->_name << " has no energy left" << std::endl;
+		return ;
 	}
 	if (this->_energyPoints > 0)
 	{
