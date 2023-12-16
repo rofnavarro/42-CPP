@@ -1,39 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.cpp                                            :+:      :+:    :+:   */
+/*   WrongAnimal.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rferrero <rferrero@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/15 12:53:49 by rferrero          #+#    #+#             */
-/*   Updated: 2023/12/16 11:07:23 by rferrero         ###   ########.fr       */
+/*   Created: 2023/12/15 19:14:43 by rferrero          #+#    #+#             */
+/*   Updated: 2023/12/16 11:07:56 by rferrero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Cat.hpp"
+#include "WrongAnimal.hpp"
 
-Cat::Cat(void)
+WrongAnimal::WrongAnimal(void)
+:_type("Wrong Animal")
 {
-	this->_type = "Cat";
 	std::cout << "A " << this->_type << " has been born" << std::endl;
 	return ;
 }
 
-Cat::Cat(const Cat &cat)
-:Animal()
+WrongAnimal::WrongAnimal(const WrongAnimal &wrongAnimal)
 {
-	*this = cat;
+	*this = wrongAnimal;
 	std::cout << this->_type << " copy constructor called" << std::endl;
 	return ;
 }
 
-Cat::~Cat(void)
+WrongAnimal::~WrongAnimal(void)
 {
+	if (this->_type != "Wrong Animal")
+		this->_type = this->_type + " Animal (WrongAnimal)";
 	std::cout << this->_type << " has been killed" << std::endl;
 	return ;
 }
 
-Cat	&Cat::operator=(const Cat &rhs)
+WrongAnimal	&WrongAnimal::operator=(const WrongAnimal &rhs)
 {
 	if (this != &rhs)
 		this->_type = rhs._type;
@@ -41,8 +42,13 @@ Cat	&Cat::operator=(const Cat &rhs)
 	return (*this);
 }
 
-void	Cat::makeSound(void) const
+const std::string	&WrongAnimal::getType(void) const
 {
-	std::cout << this->_type << ": *miaw*   *miaw*   *miaw" << std::endl;
+	return (this->_type);
+}
+
+void	WrongAnimal::makeSound(void) const
+{
+	std::cout << this->_type << ": *very weird animal sound*" << std::endl;
 	return ;
 }

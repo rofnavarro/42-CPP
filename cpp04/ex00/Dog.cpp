@@ -6,7 +6,7 @@
 /*   By: rferrero <rferrero@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 13:08:03 by rferrero          #+#    #+#             */
-/*   Updated: 2023/12/15 16:39:09 by rferrero         ###   ########.fr       */
+/*   Updated: 2023/12/16 11:07:19 by rferrero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ Dog::Dog(void)
 	return ;
 }
 
-Dog::Dog(const Dog &Dog)
-:Animal("Animal Dog")
+Dog::Dog(const Dog &dog)
+:Animal()
 {
+	*this = dog;
 	std::cout << this->_type << " copy constructor called" << std::endl;
-	*this = Dog;
 	return ;
 }
 
@@ -35,9 +35,9 @@ Dog::~Dog(void)
 
 Dog	&Dog::operator=(const Dog &rhs)
 {
-	std::cout << this->_type << " assignment operator called" << std::endl;
 	if (this != &rhs)
 		this->_type = rhs._type;
+	std::cout << this->_type << " assignment operator called" << std::endl;
 	return (*this);
 }
 

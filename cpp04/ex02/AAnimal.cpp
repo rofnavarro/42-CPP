@@ -1,39 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.cpp                                            :+:      :+:    :+:   */
+/*   AAnimal.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rferrero <rferrero@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/15 12:53:49 by rferrero          #+#    #+#             */
-/*   Updated: 2023/12/16 11:07:23 by rferrero         ###   ########.fr       */
+/*   Created: 2023/12/15 12:03:23 by rferrero          #+#    #+#             */
+/*   Updated: 2023/12/16 11:03:45 by rferrero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Cat.hpp"
+#include "AAnimal.hpp"
 
-Cat::Cat(void)
+AAnimal::AAnimal(void)
+:_type("AAnimal")
 {
-	this->_type = "Cat";
-	std::cout << "A " << this->_type << " has been born" << std::endl;
+	std::cout << this->_type << " has been born" << std::endl;
 	return ;
 }
 
-Cat::Cat(const Cat &cat)
-:Animal()
+AAnimal::AAnimal(const AAnimal &aAnimal)
 {
-	*this = cat;
+	*this = aAnimal;
 	std::cout << this->_type << " copy constructor called" << std::endl;
 	return ;
 }
 
-Cat::~Cat(void)
+AAnimal::~AAnimal(void)
 {
 	std::cout << this->_type << " has been killed" << std::endl;
 	return ;
 }
 
-Cat	&Cat::operator=(const Cat &rhs)
+AAnimal	&AAnimal::operator=(const AAnimal &rhs)
 {
 	if (this != &rhs)
 		this->_type = rhs._type;
@@ -41,8 +40,13 @@ Cat	&Cat::operator=(const Cat &rhs)
 	return (*this);
 }
 
-void	Cat::makeSound(void) const
+const std::string	&AAnimal::getType(void) const
 {
-	std::cout << this->_type << ": *miaw*   *miaw*   *miaw" << std::endl;
+	return (this->_type);
+}
+
+void	AAnimal::makeSound(void) const
+{
+	std::cout << this->_type << ": *generic AAnimal sound*" << std::endl;
 	return ;
 }
