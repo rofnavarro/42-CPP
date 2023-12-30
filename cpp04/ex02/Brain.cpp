@@ -6,7 +6,7 @@
 /*   By: rferrero <rferrero@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 11:30:23 by rferrero          #+#    #+#             */
-/*   Updated: 2023/12/16 14:51:05 by rferrero         ###   ########.fr       */
+/*   Updated: 2023/12/30 12:07:57 by rferrero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ Brain	&Brain::operator=(const Brain &rhs)
 
 const std::string	&Brain::getIdea(const int index) const
 {
+	if (index > this->_counter)
+		return (this->_ideas[this->_counter]);
 	return (this->_ideas[index]);
 }
 
