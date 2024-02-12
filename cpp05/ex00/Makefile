@@ -1,11 +1,11 @@
-NAME					=					
+NAME					=					bureaucrat
 
 CC						=					c++
 
 CCFLAGS					=					-Wall -Wextra -Werror -Wshadow
 STDFLAG					=					-std=c++98
 
-SRC						=					
+SRC						=					main.cpp Bureaucrat.cpp
 
 OBJ						=					$(SRC:.cpp=.o)
 

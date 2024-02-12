@@ -3,6 +3,7 @@
 #ifndef	BUREAUCRAT_HPP
 # define BUREAUCRAT_HPP
 
+# include <iostream>
 # include <string>
 # include <exception>
 
@@ -16,13 +17,13 @@ public:
 	{
 		public:
 			const char	*what() const throw();
-	}
+	};
 
 	class GradetooLowException: public std::exception
 	{
 		public:
 			const char	*what() const throw();
-	}
+	};
 
 						Bureaucrat(void);
 						Bureaucrat(std::string name, int grade);
@@ -37,8 +38,7 @@ public:
 	void				incrementGrade(void);
 	void				decrementGrade(void);
 
-
-	std::ostream &operator<<(std::ostream &lhs, Bureaucrat const &bureaucrat);
+	friend std::ostream &operator<<(std::ostream &lhs, const Bureaucrat &rhs);
 
 };
 
