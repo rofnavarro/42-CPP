@@ -6,7 +6,7 @@
 /*   By: rferrero <rferrero@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 14:34:42 by rferrero          #+#    #+#             */
-/*   Updated: 2024/02/12 19:12:37 by rferrero         ###   ########.fr       */
+/*   Updated: 2024/02/15 17:51:03 by rferrero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ Bureaucrat::Bureaucrat(std::string name, int grade)
 {
 	try
 	{
-		if (grade < 151 || grade > 1)
+		if (grade < 151 && grade > 1)
 		{
 			this->_name = name;
 			this->_grade = grade;
@@ -31,10 +31,11 @@ Bureaucrat::Bureaucrat(std::string name, int grade)
 		}
 		else
 		{
+			this->_name = "Broken Bureaucrat";
 			if (grade > 150)
-				throw GradetooLowException();
+				throw Bureaucrat::GradetooLowException();
 			else
-				throw GradetooHighException();
+				throw Bureaucrat::GradetooHighException();
 		}
 	}
 	catch(const std::exception& e)
@@ -85,7 +86,7 @@ void	Bureaucrat::incrementGrade(void)
 		if (this->getGrade() > 1)
 			this->_grade--;
 		else
-			throw GradetooHighException();
+			throw Bureaucrat::GradetooHighException();
 	}
 	catch(const std::exception& e)
 	{
@@ -98,10 +99,10 @@ void	Bureaucrat::decrementGrade(void)
 {
 	try
 	{
-		if (this->getGrade() < 150)
-			this->_grade++;
+		if (this->getGrade() == 150)
+			throw Bureaucrat::GradetooLowException();
 		else
-			throw GradetooLowException();
+			this->_grade++;
 	}
 	catch(const std::exception& e)
 	{
