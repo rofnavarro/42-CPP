@@ -6,7 +6,7 @@
 /*   By: rferrero <rferrero@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 14:35:06 by rferrero          #+#    #+#             */
-/*   Updated: 2024/02/15 17:49:34 by rferrero         ###   ########.fr       */
+/*   Updated: 2024/02/16 11:11:32 by rferrero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,18 +18,20 @@ int	main(void)
 	Bureaucrat	*b = new Bureaucrat("carlos", 5);
 	Bureaucrat	*c;
 	Bureaucrat	*d = new Bureaucrat(a);
-	Bureaucrat	*e = new Bureaucrat("andre", -20);
 
 	c = b;
+
+	Bureaucrat	*e = new Bureaucrat("andre", -20);
 
 	std::cout << a;
 	std::cout << *b;
 	std::cout << *c;
 	std::cout << *d;
+	std::cout << *e;
 
 	delete c;
-	delete e;
 	delete d;
+	delete e;
 
 	return (0);
 }
