@@ -6,8 +6,9 @@
 # include <iostream>
 # include <string>
 # include <exception>
+# include "Form.hpp"
 
-class Bureaucrat
+class	Bureaucrat
 {
 private:
 	std::string	_name;
@@ -17,13 +18,13 @@ public:
 	class GradetooHighException: public std::exception
 	{
 		public:
-			const char	*what() const throw();
+			virtual const char	*what() const throw();
 	};
 
 	class GradetooLowException: public std::exception
 	{
 		public:
-			const char	*what() const throw();
+			virtual const char	*what() const throw();
 	};
 
 						Bureaucrat(void);
@@ -38,6 +39,7 @@ public:
 
 	void				incrementGrade(void);
 	void				decrementGrade(void);
+	void				signForm(Form &form) const;
 
 };
 

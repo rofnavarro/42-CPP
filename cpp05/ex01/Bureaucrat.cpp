@@ -6,7 +6,7 @@
 /*   By: rferrero <rferrero@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 14:34:42 by rferrero          #+#    #+#             */
-/*   Updated: 2024/02/21 15:07:57 by rferrero         ###   ########.fr       */
+/*   Updated: 2024/02/21 15:34:41 by rferrero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,6 +112,21 @@ void	Bureaucrat::decrementGrade(void)
 	{
 		std::cout << e.what() << std::endl;
 		std::cerr << e.what() << std::endl;
+	}
+	return ;
+}
+
+void	Bureaucrat::signForm(Form &form) const
+{
+	try
+	{
+		form.beSigned(*this);
+		std::cout << this->_name << " signed " << form.getName() << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cout << this->_name << " couldn't sign " << form.getName() << " because " << e.what() << std::endl;
+		std::cerr << this->_name << " couldn't sign " << form.getName() << " because " << e.what() << std::endl;
 	}
 	return ;
 }
