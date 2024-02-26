@@ -17,13 +17,13 @@ public:
 	class GradetooHighException: public std::exception
 	{
 		public:
-			const char	*what() const throw();
+			virtual const char	*what() const throw();
 	};
 
 	class GradetooLowException: public std::exception
 	{
 		public:
-			const char	*what() const throw();
+			virtual const char	*what() const throw();
 	};
 
 						Bureaucrat(void);
