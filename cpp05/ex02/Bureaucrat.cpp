@@ -6,7 +6,7 @@
 /*   By: rferrero <rferrero@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 14:34:42 by rferrero          #+#    #+#             */
-/*   Updated: 2024/03/18 17:16:01 by rferrero         ###   ########.fr       */
+/*   Updated: 2024/03/18 17:15:44 by rferrero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,18 +120,18 @@ void	Bureaucrat::decrementGrade(void)
 	return ;
 }
 
-void	Bureaucrat::signForm(Form &form)
+void	Bureaucrat::signForm(AForm &aform)
 {
-	if (form.getIsSigned() == true)
-		std::cout << this->_name << " culdn't sign " << form.getName() << " because the form is already signed." << std::endl;
+	if (aform.getIsSigned() == true)
+		std::cout << this->_name << " culdn't sign " << aform.getName() << " because the form is already signed." << std::endl;
 	try
 	{
-		form.beSigned(*this);
+		aform.beSigned(*this);
 	}
 	catch(const std::exception& e)
 	{
-		std::cout << this->_name << " couldn't sign " << form.getName() << " because: " << e.what() << std::endl;
-		std::cerr << this->_name << " couldn't sign " << form.getName() << " because: " << e.what() << std::endl;
+		std::cout << this->_name << " couldn't sign " << aform.getName() << " because: " << e.what() << std::endl;
+		std::cerr << this->_name << " couldn't sign " << aform.getName() << " because: " << e.what() << std::endl;
 	}
 	return ;
 }

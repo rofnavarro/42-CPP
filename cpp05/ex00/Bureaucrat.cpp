@@ -6,7 +6,7 @@
 /*   By: rferrero <rferrero@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 14:34:42 by rferrero          #+#    #+#             */
-/*   Updated: 2024/03/18 12:10:59 by rferrero         ###   ########.fr       */
+/*   Updated: 2024/03/18 13:14:26 by rferrero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ void	Bureaucrat::incrementGrade(void)
 	{
 		if (this->_name == "Broken Bureaucrat")
 			throw Bureaucrat::InvalidBurreaucrat();
-		if (this->_grade > 1)
+		else if (this->_grade > 1)
 			this->_grade--;
 		else
 			throw Bureaucrat::GradetooHighException();
@@ -136,7 +136,7 @@ const char	*Bureaucrat::GradetooLowException::what() const throw()
 	return ("Grade too low!");
 }
 
-const char	*Bureaucrat::InvalidBurreaucrat::what() const throw()
+const char	*Bureaucrat::InvalidBurreaucratException::what() const throw()
 {
 	return ("Broken Burreaucrat... Can't change grade...");
 }

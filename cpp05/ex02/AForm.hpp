@@ -1,7 +1,7 @@
 #pragma	once
 
-#ifndef FORM_HPP
-# define FORM_HPP
+#ifndef AFORM_HPP
+# define AFORM_HPP
 
 # include <iostream>
 # include <string>
@@ -9,7 +9,7 @@
 
 class	Bureaucrat;
 
-class	Form
+class	AForm
 {
 private:
 	std::string	_name;
@@ -42,12 +42,12 @@ public:
 			virtual const char	*what() const throw();
 	};
 
-						Form(void);
-						Form(std::string name, int gradeToSign, int gradeToExecute);
-						Form(const Form &form);
-						~Form(void);
+						AForm(void);
+						AForm(std::string name, int gradeToSign, int gradeToExecute);
+						AForm(const AForm &aform);
+						~AForm(void);
 
-	Form				&operator=(const Form &rhs);
+	AForm				&operator=(const AForm &rhs);
 
 	const std::string	&getName(void) const;
 	const int			&getGradeToSign(void) const;
@@ -58,6 +58,6 @@ public:
 
 };
 
-std::ostream	&operator<<(std::ostream &lhs, const Form &rhs);
+std::ostream	&operator<<(std::ostream &lhs, const AForm &rhs);
 
 #endif

@@ -1,26 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Form.cpp                                           :+:      :+:    :+:   */
+/*   AForm.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rferrero <rferrero@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 15:54:56 by rferrero          #+#    #+#             */
-/*   Updated: 2024/03/18 17:13:45 by rferrero         ###   ########.fr       */
+/*   Updated: 2024/03/18 17:16:29 by rferrero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
-#include "Form.hpp"
+#include "AForm.hpp"
 
-Form::Form(void)
+AForm::AForm(void)
 :_name("Default"), _gradeToSign(150), _gradeToExecute(150), _isSigned(false)
 {
-	std::cout << this->_name << " form constructor called." << std::endl;
+	std::cout << this->_name << " Aform constructor called." << std::endl;
 	return ;
 }
 
-Form::Form(std::string name, int gradeToSign, int gradeToExecute)
+AForm::AForm(std::string name, int gradeToSign, int gradeToExecute)
 {
 	try
 	{
@@ -32,9 +32,9 @@ Form::Form(std::string name, int gradeToSign, int gradeToExecute)
 			this->_gradeToExecute = 0;
 			this->_isSigned = false;
 			if (this->_gradeToSign > 150 || this->_gradeToExecute > 150)
-				throw Form::GradetooLowToCreateException();
+				throw AForm::GradetooLowToCreateException();
 			else
-				throw Form::GradetooHighToCreateException();
+				throw AForm::GradetooHighToCreateException();
 		}
 		else
 		{
@@ -42,7 +42,7 @@ Form::Form(std::string name, int gradeToSign, int gradeToExecute)
 			this->_gradeToSign = gradeToSign;
 			this->_gradeToExecute = gradeToExecute;
 			this->_isSigned = false;
-			std::cout << this->_name << " form constructor called." << std::endl;
+			std::cout << this->_name << " Aform constructor called." << std::endl;
 		}
 	}
 	catch(const std::exception& e)
@@ -53,23 +53,23 @@ Form::Form(std::string name, int gradeToSign, int gradeToExecute)
 	return ;
 }
 
-Form::Form(const Form &form)
-:_name(form._name + " Copy"), _gradeToSign(form._gradeToSign), _gradeToExecute(form._gradeToExecute)
+AForm::AForm(const AForm &aform)
+:_name(aform._name + " Copy"), _gradeToSign(aform._gradeToSign), _gradeToExecute(aform._gradeToExecute)
 {
-	std::cout << "Form copy constructor called." << std::endl;
-	*this = form;
+	std::cout << "AForm copy constructor called." << std::endl;
+	*this = aform;
 	return ;
 }
 
-Form::~Form(void)
+AForm::~AForm(void)
 {
-	std::cout << this->_name << " form has expired." << std::endl;
+	std::cout << this->_name << " Aform has expired." << std::endl;
 	return ;
 }
 
-Form	&Form::operator=(const Form &rhs)
+AForm	&AForm::operator=(const AForm &rhs)
 {
-	std::cout << "Form assignment operator called." << std::endl;
+	std::cout << "AForm assignment operator called." << std::endl;
 	if (this != &rhs)
 	{
 		this->_name = rhs._name;
@@ -80,34 +80,34 @@ Form	&Form::operator=(const Form &rhs)
 	return (*this);
 }
 
-const std::string	&Form::getName(void) const
+const std::string	&AForm::getName(void) const
 {
 	return (this->_name);
 }
 
-const int	&Form::getGradeToSign(void) const
+const int	&AForm::getGradeToSign(void) const
 {
 	return (this->_gradeToSign);
 }
 
-const int	&Form::getGradeToExecute(void) const
+const int	&AForm::getGradeToExecute(void) const
 {
 	return (this->_gradeToExecute);
 }
 
-const bool	&Form::getIsSigned(void) const
+const bool	&AForm::getIsSigned(void) const
 {
 	return (this->_isSigned);
 }
 
-void	Form::beSigned(Bureaucrat &bureaucrat)
+void	AForm::beSigned(Bureaucrat &bureaucrat)
 {
 	try
 	{
 		if (this->getIsSigned())
-			throw Form::AlreadySignedException();
+			throw AForm::AlreadySignedException();
 		if (bureaucrat.getGrade() > this->_gradeToSign)
-			throw Form::GradetooLowToSignException();
+			throw AForm::GradetooLowToSignException();
 		else
 		{
 			this->_isSigned = true;
@@ -122,33 +122,33 @@ void	Form::beSigned(Bureaucrat &bureaucrat)
 	return ;
 }
 
-std::ostream	&operator<<(std::ostream &lhs, const Form &rhs)
+std::ostream	&operator<<(std::ostream &lhs, const AForm &rhs)
 {
 	if (rhs.getIsSigned() == true)
-		lhs << "Form " << rhs.getName() << " IS signed." << std::endl;
+		lhs << "AForm " << rhs.getName() << " IS signed." << std::endl;
 	else
-		lhs << "Form " << rhs.getName() << " IS NOT signed." << std::endl;
+		lhs << "AForm " << rhs.getName() << " IS NOT signed." << std::endl;
 	lhs << "Grade to sign: " << rhs.getGradeToSign() << "." << std::endl;
 	lhs << "Grade to execute: " << rhs.getGradeToExecute() << "." << std::endl;
 	return (lhs);
 }
 
-const char	*Form::GradetooLowToCreateException::what() const throw()
+const char	*AForm::GradetooLowToCreateException::what() const throw()
 {
-	return ("Grade to sign or to execute the form is too low!");
+	return ("Grade to sign or to execute the Aform is too low!");
 }
 
-const char	*Form::GradetooHighToCreateException::what() const throw()
+const char	*AForm::GradetooHighToCreateException::what() const throw()
 {
-	return ("Grade to sign or to execute the form is too low!");
+	return ("Grade to sign or to execute the Aform is too low!");
 }
 
-const char	*Form::GradetooLowToSignException::what() const throw()
+const char	*AForm::GradetooLowToSignException::what() const throw()
 {
-	return ("Grade of the bureaucrat is too low to sign the form!");
+	return ("Grade of the bureaucrat is too low to sign the Aform!");
 }
 
-const char	*Form::AlreadySignedException::what() const throw()
+const char	*AForm::AlreadySignedException::what() const throw()
 {
-	return ("Form is already signed!");
+	return ("AForm is already signed!");
 }

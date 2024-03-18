@@ -7,6 +7,8 @@
 # include <string>
 # include <exception>
 
+# include "AForm.hpp"
+
 class	Bureaucrat
 {
 private:
@@ -44,6 +46,7 @@ public:
 
 	void				incrementGrade(void);
 	void				decrementGrade(void);
+	void				signForm(AForm &aform);
 
 };
 
