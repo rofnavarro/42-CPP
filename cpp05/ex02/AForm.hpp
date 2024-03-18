@@ -17,6 +17,9 @@ private:
 	int			_gradeToExecute;
 	bool		_isSigned;
 
+protected:
+	std::string	_target;
+
 public:
 	class	GradetooLowToCreateException: public std::exception
 	{
@@ -42,8 +45,20 @@ public:
 			virtual const char	*what() const throw();
 	};
 
+	class	NotSignedException: public std::exception
+	{
+		public:
+			virtual const char	*what() const throw();
+	};
+
+	class	FileNotCreatedException: public std::exception
+	{
+		public:
+			virtual const char	*what() const throw();
+	};
+
 						AForm(void);
-						AForm(std::string name, int gradeToSign, int gradeToExecute);
+						AForm(std::string name, int gradeToSign, int gradeToExecute, std::string target);
 						AForm(const AForm &aform);
 						~AForm(void);
 
@@ -55,6 +70,7 @@ public:
 	const bool			&getIsSigned(void) const;
 
 	void				beSigned(Bureaucrat &bureaucrat);
+	virtual void		execute(Bureaucrat const &executor) const = 0;
 
 };
 

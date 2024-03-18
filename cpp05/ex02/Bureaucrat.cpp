@@ -6,7 +6,7 @@
 /*   By: rferrero <rferrero@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 14:34:42 by rferrero          #+#    #+#             */
-/*   Updated: 2024/03/18 17:15:44 by rferrero         ###   ########.fr       */
+/*   Updated: 2024/03/18 18:31:49 by rferrero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,6 +133,12 @@ void	Bureaucrat::signForm(AForm &aform)
 		std::cout << this->_name << " couldn't sign " << aform.getName() << " because: " << e.what() << std::endl;
 		std::cerr << this->_name << " couldn't sign " << aform.getName() << " because: " << e.what() << std::endl;
 	}
+	return ;
+}
+
+void	Bureaucrat::executeForm(AForm const &form)
+{
+	form.execute(*this);
 	return ;
 }
 
