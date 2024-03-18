@@ -6,7 +6,7 @@
 /*   By: rferrero <rferrero@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 14:34:42 by rferrero          #+#    #+#             */
-/*   Updated: 2024/02/23 14:38:08 by rferrero         ###   ########.fr       */
+/*   Updated: 2024/03/18 12:10:59 by rferrero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 Bureaucrat::Bureaucrat(void)
 :_name("Default"), _grade(150)
 {
-	std::cout << this->getName() << " bureaucrat constructor called" << std::endl;
+	std::cout << this->_name << " bureaucrat constructor called." << std::endl;
 	return ;
 }
 
@@ -27,12 +27,12 @@ Bureaucrat::Bureaucrat(std::string name, int grade)
 		{
 			this->_name = name;
 			this->_grade = grade;
-			std::cout << this->getName() << " bureaucrat constructor called" << std::endl;
+			std::cout << this->_name << " bureaucrat constructor called." << std::endl;
 		}
 		else
 		{
 			this->_name = "Broken Bureaucrat";
-			this->_grade = 0;
+			this->_grade = 151;
 			if (grade > 150)
 				throw Bureaucrat::GradetooLowException();
 			else
@@ -48,22 +48,22 @@ Bureaucrat::Bureaucrat(std::string name, int grade)
 }
 
 Bureaucrat::Bureaucrat(const Bureaucrat &bureaucrat)
-:_name(bureaucrat.getName() + " Copy")
+:_name(bureaucrat._name + " Copy")
 {
-	std::cout << "Bureaucrat copy constructor called" << std::endl;
+	std::cout << "Bureaucrat copy constructor called." << std::endl;
 	*this = bureaucrat;
 	return ;
 }
 
 Bureaucrat::~Bureaucrat(void)
 {
-	std::cout << this->getName() << " has been destroyed" << std::endl;
+	std::cout << this->_name << " has been destroyed." << std::endl;
 	return ;
 }
 
 Bureaucrat	&Bureaucrat::operator=(const Bureaucrat &rhs)
 {
-	std::cout << "Bureaucrat assignment operator called" << std::endl;
+	std::cout << "Bureaucrat assignment operator called." << std::endl;
 	if (this != &rhs)
 	{
 		this->_name = rhs._name;
@@ -86,7 +86,9 @@ void	Bureaucrat::incrementGrade(void)
 {
 	try
 	{
-		if (this->getGrade() > 1)
+		if (this->_name == "Broken Bureaucrat")
+			throw Bureaucrat::InvalidBurreaucrat();
+		if (this->_grade > 1)
 			this->_grade--;
 		else
 			throw Bureaucrat::GradetooHighException();
@@ -103,7 +105,9 @@ void	Bureaucrat::decrementGrade(void)
 {
 	try
 	{
-		if (this->getGrade() < 150)
+		if (this->_name == "Broken Bureaucrat")
+			throw Bureaucrat::InvalidBurreaucrat();
+		else if (this->_grade < 150)
 			this->_grade++;
 		else
 			throw Bureaucrat::GradetooLowException();
@@ -130,4 +134,9 @@ const char	*Bureaucrat::GradetooHighException::what() const throw()
 const char	*Bureaucrat::GradetooLowException::what() const throw()
 {
 	return ("Grade too low!");
+}
+
+const char	*Bureaucrat::InvalidBurreaucrat::what() const throw()
+{
+	return ("Broken Burreaucrat... Can't change grade...");
 }

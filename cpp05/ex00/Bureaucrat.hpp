@@ -26,6 +26,12 @@ public:
 			virtual const char	*what() const throw();
 	};
 
+	class InvalidBurreaucrat: public std::exception
+	{
+		public:
+			virtual const char	*what() const throw();
+	};
+
 						Bureaucrat(void);
 						Bureaucrat(std::string name, int grade);
 						Bureaucrat(const Bureaucrat &bureaucrat);
