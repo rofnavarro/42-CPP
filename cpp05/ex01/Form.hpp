@@ -8,10 +8,10 @@
 class Form
 {
 private:
-	std::string	_name;
-	int			_gradeToSign;
-	int			_gradeToExecute;
-	bool		_isSigned;
+	const std::string	_name;
+	const int			_gradeToSign;
+	const int			_gradeToExecute;
+	bool				_isSigned;
 
 public:
 	class GradetooHighException: public std::exception
