@@ -6,7 +6,7 @@
 /*   By: rferrero <rferrero@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 15:54:56 by rferrero          #+#    #+#             */
-/*   Updated: 2024/03/18 17:16:29 by rferrero         ###   ########.fr       */
+/*   Updated: 2024/03/18 17:36:47 by rferrero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,7 +140,7 @@ const char	*AForm::GradetooLowToCreateException::what() const throw()
 
 const char	*AForm::GradetooHighToCreateException::what() const throw()
 {
-	return ("Grade to sign or to execute the Aform is too low!");
+	return ("Grade to sign or to execute the Aform is too high!");
 }
 
 const char	*AForm::GradetooLowToSignException::what() const throw()
