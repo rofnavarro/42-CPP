@@ -6,7 +6,7 @@
 /*   By: rferrero <rferrero@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 19:19:21 by rferrero          #+#    #+#             */
-/*   Updated: 2024/03/20 16:12:40 by rferrero         ###   ########.fr       */
+/*   Updated: 2024/03/20 20:08:41 by rferrero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,20 +50,30 @@ ShrubberyCreationForm	&ShrubberyCreationForm::operator=(const ShrubberyCreationF
 
 void	ShrubberyCreationForm::execute(Bureaucrat const &executor) const
 {
-	AForm::execute(executor);
-	std::ofstream	file((this->_target + "_shrubbery").c_str());
-	
-	if (file.fail())
-		throw ShrubberyCreationForm::FileNotCreatedException();
-	else
+	try
 	{
-		file << "ASCII trees inside it." << std::endl;
-		file << "ASCII trees inside it." << std::endl;
-		file << "ASCII trees inside it." << std::endl;
-		file << "ASCII trees inside it." << std::endl;
-		file << "ASCII trees inside it." << std::endl;
-		file << "ASCII trees inside it." << std::endl;
-		file.close();
+		if (this->getIsSigned() == false)
+			throw ShrubberyCreationForm::NotSignedException();
+		AForm::execute(executor);
+		std::ofstream	file((this->_target + "_shrubbery").c_str());
+		
+		if (file.fail())
+			throw ShrubberyCreationForm::FileNotCreatedException();
+		else
+		{
+			file << "ASCII trees inside it." << std::endl;
+			file << "ASCII trees inside it." << std::endl;
+			file << "ASCII trees inside it." << std::endl;
+			file << "ASCII trees inside it." << std::endl;
+			file << "ASCII trees inside it." << std::endl;
+			file << "ASCII trees inside it." << std::endl;
+			file.close();
+		}
+	}
+	catch(const std::exception& e)
+	{
+		std::cout << e.what() << std::endl;
+		std::cerr << e.what() << std::endl;
 	}
 	return ;
 }

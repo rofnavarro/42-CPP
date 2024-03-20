@@ -6,7 +6,7 @@
 /*   By: rferrero <rferrero@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 15:54:56 by rferrero          #+#    #+#             */
-/*   Updated: 2024/03/20 16:11:27 by rferrero         ###   ########.fr       */
+/*   Updated: 2024/03/20 20:13:18 by rferrero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 AForm::AForm(void)
 :_name("Default"), _gradeToSign(150), _gradeToExecute(150), _isSigned(false), _target("root")
 {
-	std::cout << this->_name << " Aform constructor called." << std::endl;
+	// std::cout << this->_name << " Aform constructor called." << std::endl;
 	return ;
 }
 
@@ -44,7 +44,7 @@ AForm::AForm(std::string name, int gradeToSign, int gradeToExecute, std::string 
 			this->_gradeToExecute = gradeToExecute;
 			this->_isSigned = false;
 			this->_target = target;
-			std::cout << this->_name << " Aform constructor called." << std::endl;
+			// std::cout << this->_name << " Aform constructor called." << std::endl;
 		}
 	}
 	catch(const std::exception& e)
@@ -58,20 +58,20 @@ AForm::AForm(std::string name, int gradeToSign, int gradeToExecute, std::string 
 AForm::AForm(const AForm &aform)
 :_name(aform._name + " Copy"), _gradeToSign(aform._gradeToSign), _gradeToExecute(aform._gradeToExecute), _target(aform._target)
 {
-	std::cout << "AForm copy constructor called." << std::endl;
+	// std::cout << "AForm copy constructor called." << std::endl;
 	*this = aform;
 	return ;
 }
 
 AForm::~AForm(void)
 {
-	std::cout << this->_name << " Aform has expired." << std::endl;
+	// std::cout << this->_name << " Aform has expired." << std::endl;
 	return ;
 }
 
 AForm	&AForm::operator=(const AForm &rhs)
 {
-	std::cout << "AForm assignment operator called." << std::endl;
+	// std::cout << "AForm assignment operator called." << std::endl;
 	if (this != &rhs)
 	{
 		this->_name = rhs._name;
@@ -107,9 +107,7 @@ void	AForm::beSigned(Bureaucrat &bureaucrat)
 {
 	try
 	{
-		if (this->getIsSigned())
-			throw AForm::AlreadySignedException();
-		if (bureaucrat.getGrade() > this->_gradeToSign)
+		if (bureaucrat.getGrade() > this->getGradeToSign())
 			throw AForm::GradetooLowToSignException();
 		else
 		{
@@ -168,11 +166,6 @@ const char	*AForm::GradetooHighToCreateException::what() const throw()
 const char	*AForm::GradetooLowToSignException::what() const throw()
 {
 	return ("Grade of the bureaucrat is too low to sign or to execute the Aform!");
-}
-
-const char	*AForm::AlreadySignedException::what() const throw()
-{
-	return ("AForm is already signed!");
 }
 
 const char	*AForm::NotSignedException::what() const throw()
