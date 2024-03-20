@@ -6,7 +6,7 @@
 /*   By: rferrero <rferrero@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 19:19:21 by rferrero          #+#    #+#             */
-/*   Updated: 2024/03/18 20:40:26 by rferrero         ###   ########.fr       */
+/*   Updated: 2024/03/20 16:12:40 by rferrero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,8 @@ ShrubberyCreationForm	&ShrubberyCreationForm::operator=(const ShrubberyCreationF
 }
 
 void	ShrubberyCreationForm::execute(Bureaucrat const &executor) const
-:AForm::execute(executor);
 {
+	AForm::execute(executor);
 	std::ofstream	file((this->_target + "_shrubbery").c_str());
 	
 	if (file.fail())

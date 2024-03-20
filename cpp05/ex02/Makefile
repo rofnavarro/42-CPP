@@ -5,7 +5,7 @@ CC						=					c++
 CCFLAGS					=					-Wall -Wextra -Werror -Wshadow
 STDFLAG					=					-std=c++98
 
-SRC						=					main.cpp Bureaucrat.cpp AForm.cpp
+SRC						=					main.cpp Bureaucrat.cpp AForm.cpp ShrubberyCreationForm.cpp
 
 OBJ						=					$(SRC:.cpp=.o)
 
