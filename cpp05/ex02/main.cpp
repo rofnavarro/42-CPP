@@ -14,6 +14,7 @@
 #include "AForm.hpp"
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
+#include "PresidentialPardonForm.hpp"
 
 int	main(void)
 {
@@ -46,6 +47,14 @@ int	main(void)
 
 	std::cout << "********************************************** PRESIDENTIAL **********************************************" << std::endl;
 
+	PresidentialPardonForm		d41("root");
+	PresidentialPardonForm		d42("home");
+
+	a->signForm(d41);
+	d41.execute(*a);
+
+	d42.beSigned(*b);
+	d42.execute(*b);
 
 	std::cout << "********************************************** CLEAN UP **********************************************" << std::endl;
 

@@ -6,7 +6,7 @@
 /*   By: rferrero <rferrero@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 15:54:56 by rferrero          #+#    #+#             */
-/*   Updated: 2024/03/20 20:13:18 by rferrero         ###   ########.fr       */
+/*   Updated: 2024/03/20 20:33:55 by rferrero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,22 +155,22 @@ std::ostream	&operator<<(std::ostream &lhs, const AForm &rhs)
 
 const char	*AForm::GradetooLowToCreateException::what() const throw()
 {
-	return ("Grade to sign or to execute the Aform is too low!");
+	return ("Grade of the form to sign or to execute is too low!");
 }
 
 const char	*AForm::GradetooHighToCreateException::what() const throw()
 {
-	return ("Grade to sign or to execute the Aform is too high!");
+	return ("Grade of the form to sign or to execute is too high!");
 }
 
 const char	*AForm::GradetooLowToSignException::what() const throw()
 {
-	return ("Grade of the bureaucrat is too low to sign or to execute the Aform!");
+	return ("Grade of the bureaucrat is too low to sign or to execute!");
 }
 
 const char	*AForm::NotSignedException::what() const throw()
 {
-	return ("AForm is not signed!");
+	return ("Need signature to execute the form!");
 }
 
 const char	*AForm::FileNotCreatedException::what() const throw()
