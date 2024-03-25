@@ -6,7 +6,7 @@
 /*   By: rferrero <rferrero@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 19:19:21 by rferrero          #+#    #+#             */
-/*   Updated: 2024/03/20 20:08:41 by rferrero         ###   ########.fr       */
+/*   Updated: 2024/03/24 20:47:05 by rferrero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ void	ShrubberyCreationForm::execute(Bureaucrat const &executor) const
 			throw ShrubberyCreationForm::FileNotCreatedException();
 		else
 		{
+			std::cout << "Creating file..." << std::endl;
 			file << "ASCII trees inside it." << std::endl;
 			file << "ASCII trees inside it." << std::endl;
 			file << "ASCII trees inside it." << std::endl;
@@ -72,7 +73,7 @@ void	ShrubberyCreationForm::execute(Bureaucrat const &executor) const
 	}
 	catch(const std::exception& e)
 	{
-		std::cout << e.what() << std::endl;
+		// std::cout << e.what() << std::endl;
 		std::cerr << e.what() << std::endl;
 	}
 	return ;

@@ -12,13 +12,13 @@ class	Bureaucrat;
 class	AForm
 {
 private:
-	std::string	_name;
-	int			_gradeToSign;
-	int			_gradeToExecute;
-	bool		_isSigned;
+	const std::string	_name;
+	const int			_gradeToSign;
+	const int			_gradeToExecute;
+	bool				_isSigned;
 
 protected:
-	std::string	_target;
+	std::string			_target;
 
 public:
 	class	GradetooLowToCreateException: public std::exception
@@ -34,6 +34,12 @@ public:
 	};
 
 	class	GradetooLowToSignException: public std::exception
+	{
+		public:
+			virtual const char	*what() const throw();
+	};
+
+	class	AlreadySignedException: public std::exception
 	{
 		public:
 			virtual const char	*what() const throw();
@@ -64,7 +70,7 @@ public:
 	const bool			&getIsSigned(void) const;
 
 	void				beSigned(Bureaucrat &bureaucrat);
-	virtual void		execute(Bureaucrat const &executor) const = 0;
+	virtual	void		execute(Bureaucrat const &executor) const = 0;
 
 };
 

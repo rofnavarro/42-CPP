@@ -6,7 +6,7 @@
 /*   By: rferrero <rferrero@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 19:19:21 by rferrero          #+#    #+#             */
-/*   Updated: 2024/03/20 20:08:58 by rferrero         ###   ########.fr       */
+/*   Updated: 2024/03/24 20:46:44 by rferrero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void	RobotomyRequestForm::execute(Bureaucrat const &executor) const
 	}
 	catch(const std::exception& e)
 	{
-		std::cout << e.what() << std::endl;
+		// std::cout << e.what() << std::endl;
 		std::cerr << e.what() << std::endl;
 	}
 	return ;

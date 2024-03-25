@@ -6,7 +6,7 @@
 /*   By: rferrero <rferrero@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 14:34:42 by rferrero          #+#    #+#             */
-/*   Updated: 2024/03/18 13:14:26 by rferrero         ###   ########.fr       */
+/*   Updated: 2024/03/24 20:13:49 by rferrero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,33 +15,25 @@
 Bureaucrat::Bureaucrat(void)
 :_name("Default"), _grade(150)
 {
-	std::cout << this->_name << " bureaucrat constructor called." << std::endl;
+	std::cout << this->getName() << " bureaucrat constructor called." << std::endl;
 	return ;
 }
 
 Bureaucrat::Bureaucrat(std::string name, int grade)
+:_name(name), _grade(grade)
 {
 	try
 	{
-		if (grade < 151 && grade > 0)
-		{
-			this->_name = name;
-			this->_grade = grade;
-			std::cout << this->_name << " bureaucrat constructor called." << std::endl;
-		}
+		if (grade > 150)
+			throw Bureaucrat::GradetooLowException();
+		else if (grade < 0)
+			throw Bureaucrat::GradetooHighException();
 		else
-		{
-			this->_name = "Broken Bureaucrat";
-			this->_grade = 151;
-			if (grade > 150)
-				throw Bureaucrat::GradetooLowException();
-			else
-				throw Bureaucrat::GradetooHighException();
-		}
+			std::cout << this->getName() << " bureaucrat constructor called." << std::endl;
 	}
 	catch(const std::exception& e)
 	{
-		std::cout << e.what() << std::endl;
+		// std::cout << e.what() << std::endl;
 		std::cerr << e.what() << std::endl;
 	}
 	return ;
@@ -57,7 +49,7 @@ Bureaucrat::Bureaucrat(const Bureaucrat &bureaucrat)
 
 Bureaucrat::~Bureaucrat(void)
 {
-	std::cout << this->_name << " has been destroyed." << std::endl;
+	std::cout << this->getName() << " has been destroyed." << std::endl;
 	return ;
 }
 
@@ -66,7 +58,7 @@ Bureaucrat	&Bureaucrat::operator=(const Bureaucrat &rhs)
 	std::cout << "Bureaucrat assignment operator called." << std::endl;
 	if (this != &rhs)
 	{
-		this->_name = rhs._name;
+		const_cast	<std::string &>(this->_name) = rhs._name + " Assigned";
 		this->_grade = rhs._grade;
 	}
 	return (*this);
@@ -86,16 +78,16 @@ void	Bureaucrat::incrementGrade(void)
 {
 	try
 	{
-		if (this->_name == "Broken Bureaucrat")
-			throw Bureaucrat::InvalidBurreaucrat();
-		else if (this->_grade > 1)
+		if (this->getGrade() > 150 || this->getGrade() < 0)
+			throw Bureaucrat::InvalidBurreaucratException();
+		else if (this->getGrade() > 1)
 			this->_grade--;
 		else
 			throw Bureaucrat::GradetooHighException();
 	}
 	catch(const std::exception& e)
 	{
-		std::cout << e.what() << std::endl;
+		// std::cout << e.what() << std::endl;
 		std::cerr << e.what() << std::endl;
 	}
 	return ;
@@ -105,16 +97,16 @@ void	Bureaucrat::decrementGrade(void)
 {
 	try
 	{
-		if (this->_name == "Broken Bureaucrat")
-			throw Bureaucrat::InvalidBurreaucrat();
-		else if (this->_grade < 150)
+		if (this->getGrade() > 150 || this->getGrade() < 0)
+			throw Bureaucrat::InvalidBurreaucratException();
+		else if (this->getGrade() < 150)
 			this->_grade++;
 		else
 			throw Bureaucrat::GradetooLowException();
 	}
 	catch(const std::exception& e)
 	{
-		std::cout << e.what() << std::endl;
+		// std::cout << e.what() << std::endl;
 		std::cerr << e.what() << std::endl;
 	}
 	return ;

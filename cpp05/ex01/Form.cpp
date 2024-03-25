@@ -6,7 +6,7 @@
 /*   By: rferrero <rferrero@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 15:54:56 by rferrero          #+#    #+#             */
-/*   Updated: 2024/03/18 17:44:19 by rferrero         ###   ########.fr       */
+/*   Updated: 2024/03/24 20:14:46 by rferrero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,33 +21,20 @@ Form::Form(void)
 }
 
 Form::Form(std::string name, int gradeToSign, int gradeToExecute)
+:_name(name), _gradeToSign(gradeToSign), _gradeToExecute(gradeToExecute), _isSigned(false)
 {
 	try
 	{
-		if (gradeToSign > 150 || gradeToExecute > 150 || \
-			gradeToSign < 1 || gradeToExecute < 1)
-		{
-			this->_name = "Invalid";
-			this->_gradeToSign = 0;
-			this->_gradeToExecute = 0;
-			this->_isSigned = false;
-			if (this->_gradeToSign > 150 || this->_gradeToExecute > 150)
-				throw Form::GradetooLowToCreateException();
-			else
-				throw Form::GradetooHighToCreateException();
-		}
+		if (this->_gradeToSign > 150 || this->_gradeToExecute > 150)
+			throw Form::GradetooLowToCreateException();
+		else if (gradeToSign < 1 || gradeToExecute < 1)
+			throw Form::GradetooHighToCreateException();
 		else
-		{
-			this->_name = name;
-			this->_gradeToSign = gradeToSign;
-			this->_gradeToExecute = gradeToExecute;
-			this->_isSigned = false;
 			std::cout << this->_name << " form constructor called." << std::endl;
-		}
 	}
 	catch(const std::exception& e)
 	{
-		std::cout << e.what() << std::endl;
+		// std::cout << e.what() << std::endl;
 		std::cerr << e.what() << std::endl;
 	}
 	return ;
@@ -72,10 +59,10 @@ Form	&Form::operator=(const Form &rhs)
 	std::cout << "Form assignment operator called." << std::endl;
 	if (this != &rhs)
 	{
-		this->_name = rhs._name;
-		this->_gradeToSign = rhs._gradeToSign;
-		this->_gradeToExecute = rhs._gradeToExecute;
-		this->_isSigned = rhs._isSigned;
+		const_cast	<std::string &>(this->_name) = rhs.getName() + " Assigned";
+		const_cast	<int &>(this->_gradeToSign) = rhs.getGradeToSign();
+		const_cast	<int &>(this->_gradeToExecute) = rhs.getGradeToExecute();
+		this->_isSigned = rhs.getIsSigned();
 	}
 	return (*this);
 }
@@ -116,7 +103,7 @@ void	Form::beSigned(Bureaucrat &bureaucrat)
 	}
 	catch(const std::exception& e)
 	{
-		std::cout << e.what() << std::endl;
+		// std::cout << e.what() << std::endl;
 		std::cerr << e.what() << std::endl;
 	}
 	return ;
