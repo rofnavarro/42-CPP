@@ -6,7 +6,7 @@
 /*   By: rferrero <rferrero@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 17:15:25 by rferrero          #+#    #+#             */
-/*   Updated: 2024/03/27 20:30:03 by rferrero         ###   ########.fr       */
+/*   Updated: 2024/03/27 20:58:02 by rferrero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ static bool	isDouble(const std::string &input);
 
 static bool	intOverflow(const std::string &input);
 static bool	floatOverflow(const std::string &input);
-static bool	doubleOverflow(const std::string &input);
 
 static void	printChar(char a);
 static void	printInt(int i);
@@ -163,14 +162,6 @@ static bool	floatOverflow(const std::string &input)
 	return (false);
 }
 
-static bool	doubleOverflow(const std::string &input)
-{
-	long double	value = std::strtold(input.c_str(), NULL);
-	if (value > std::numeric_limits<double>::max() || value < std::numeric_limits<double>::min())
-		return (true);
-	return (false);
-}
-
 //	print functions
 
 static void	printChar(char a)
@@ -233,7 +224,7 @@ static void	intConverter(const std::string &input)
 	//	char
 	if (i > 255)
 		printImpossible("char");
-	else if (i < 32)
+	else if (i < 32 || i < 0)
 		printNonDisplayable();
 	else
 		printChar(static_cast<char>(i));
@@ -256,7 +247,7 @@ static void	floatConverter(const std::string &input)
 	//	char
 	if (input.compare("nanf") == 0 || input.compare("+inff") == 0 || input.compare("-inff") == 0)
 		printImpossible("char");
-	else if (f > 255)
+	else if (f > 255 || f < 0)
 		printImpossible("char");
 	else if (f < 32)
 		printNonDisplayable();
@@ -288,7 +279,7 @@ static void	doubleConverter(const std::string &input)
 	//	char
 	if (input.compare("nan") == 0 || input.compare("+inf") == 0 || input.compare("-inf") == 0)
 		printImpossible("char");
-	else if (d > 255)
+	else if (d > 255 || d < 0)
 		printImpossible("char");
 	else if (d < 32)
 		printNonDisplayable();
@@ -309,10 +300,7 @@ static void	doubleConverter(const std::string &input)
 	else
 		printFloat(static_cast<float>(d));
 	//	double
-	if (doubleOverflow(input) == true)
-		printImpossible("double");
-	else
-		printDouble(static_cast<double>(d));
+	printDouble(static_cast<double>(d));
 	return ;
 }
 
