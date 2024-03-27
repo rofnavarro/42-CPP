@@ -1,11 +1,11 @@
-NAME					=					
+NAME					=					converter
 
 CC						=					c++
 
 CCFLAGS					=					-Wall -Wextra -Werror -Wshadow
 STDFLAG					=					-std=c++98
 
-SRC						=					
+SRC						=					main.cpp ScalarConverter.cpp
 
 OBJ						=					$(SRC:.cpp=.o)
 

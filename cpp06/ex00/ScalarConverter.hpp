@@ -3,11 +3,13 @@
 #ifndef SCALARCONVERTER_HPP
 # define SCALARCONVERTER_HPP
 
+# include <cstdlib>
 # include <iostream>
 # include <limits>
 # include <cmath>
-# include <stdlib>
 # include <iomanip>
+
+# include <cstdio>
 
 typedef enum	e_class
 {
