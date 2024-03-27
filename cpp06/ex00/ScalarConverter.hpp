@@ -8,6 +8,7 @@
 # include <limits>
 # include <cmath>
 # include <iomanip>
+# include <stdlib.h>
 
 # include <cstdio>
 
@@ -17,7 +18,6 @@ typedef enum	e_class
 	INT,
 	FLOAT,
 	DOUBLE,
-	PSEUDO,
 	INVALID,
 }	t_class;
 
