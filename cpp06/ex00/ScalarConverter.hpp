@@ -9,7 +9,7 @@
 # include <cmath>
 # include <iomanip>
 # include <stdlib.h>
-
+# include <string>
 # include <cstdio>
 
 typedef enum	e_class
