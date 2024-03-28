@@ -5,7 +5,7 @@
 
 # include <string>
 
-struct Data
+struct	Data
 {
 	std::string	name;
 	std::string	lastname;
