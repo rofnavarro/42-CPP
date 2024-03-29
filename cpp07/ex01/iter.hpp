@@ -6,6 +6,14 @@
 # include <iostream>
 
 template<typename T>
+void	iter(T *array, size_t size, void (*f)(T &))
+{
+	for (size_t counter = 0; counter < size; counter++)
+		f(array[counter]);	
+	return ;
+}
+
+template<typename T>
 void	iter(T *array, size_t size, void (*f)(const T &))
 {
 	for (size_t counter = 0; counter < size; counter++)
