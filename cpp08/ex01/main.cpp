@@ -6,7 +6,7 @@
 /*   By: rferrero <rferrero@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/31 15:03:18 by rferrero          #+#    #+#             */
-/*   Updated: 2024/03/31 15:23:49 by rferrero         ###   ########.fr       */
+/*   Updated: 2024/03/31 16:31:04 by rferrero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,7 @@ int	main(void)
 
 	//	Test 2
 	Span	arr2(10000);
-	for (int i = 0; i < 10000; i++)
-		arr2.addNumber(i);
+	arr2.fillNumber();
 	for (int i = 0; i < 10000; i++)
 		std::cout << "Value: " << arr2[i] << std::endl;
 	

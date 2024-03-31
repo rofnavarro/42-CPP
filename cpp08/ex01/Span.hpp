@@ -5,6 +5,7 @@
 
 # include <algorithm>
 # include <stdexcept>
+# include <cstdlib>
 # include <vector>
 
 class	Span
@@ -42,6 +43,8 @@ public:
 	int		&operator[](int index);
 
 	void	addNumber(int value);
+	void	fillNumber(void);
+
 	int		shortestSpan(void);
 	int		longestSpan(void);
 

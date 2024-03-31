@@ -6,7 +6,7 @@
 /*   By: rferrero <rferrero@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/31 14:37:51 by rferrero          #+#    #+#             */
-/*   Updated: 2024/03/31 15:20:39 by rferrero         ###   ########.fr       */
+/*   Updated: 2024/03/31 16:30:15 by rferrero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,20 @@ void	Span::addNumber(int value)
 	if (this->_vector.size() == this->_size)
 		throw Span::VectorFullException();
 	this->_vector.push_back(value);
+	return ;
+}
+
+static	int randomNumber(void)
+{
+	return (rand() % 10000 + 1);
+}
+
+void	Span::fillNumber(void)
+{
+	std::vector<int>	tmp(this->_size);
+
+	std::generate(tmp.begin(), tmp.end(), randomNumber);
+	this->_vector = tmp;
 	return ;
 }
 
