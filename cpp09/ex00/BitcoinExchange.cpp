@@ -6,7 +6,7 @@
 /*   By: rferrero <rferrero@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/31 20:19:44 by rferrero          #+#    #+#             */
-/*   Updated: 2024/04/01 12:11:23 by rferrero         ###   ########.fr       */
+/*   Updated: 2024/04/02 09:24:06 by rferrero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,7 @@ void	BitcoinExchange::getInputData(void)
 		value = std::strtod(str_value.c_str(), NULL);
 	
 		if (!value)
-			std::cout << "Error: empty value." << std::endl;
+			std::cout << "Error: empty value or invalid format." << std::endl;
 		else if (value < 0)
 			std::cout << "Error: not a positive number." << std::endl;
 		else if (position != 10 || isDateValid(date) == false)

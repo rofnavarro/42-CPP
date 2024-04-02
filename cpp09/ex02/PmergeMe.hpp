@@ -45,10 +45,6 @@ public:
 	void		getInput(char **input);
 	bool		isDuplicated(void);
 
-	void		printBefore(void);
-	void		printAfter(void);
-	void		printDuration(void);
-
 	void		run(char **input);
 
 	void		sortVector(void);
@@ -58,6 +54,10 @@ public:
 	void		sortDeque(void);
 	void		pairDeque(void);
 	void		dequeInsert(unsigned int num);
+
+	void		printBefore(void);
+	void		printAfter(void);
+	void		printDuration(void);
 
 };
 
